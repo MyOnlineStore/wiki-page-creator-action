@@ -46,7 +46,7 @@ git config user.email $ACTION_MAIL
 git pull https://${GH_PAT}@github.com/$OWNER/$REPO_NAME.wiki.git
 cd ..
 
-for i in $(find $MD_FOLDER -maxdepth 1 -type f -name '*.md' -execdir basename '{}' ';'); do
+for i in $(find $MD_FOLDER -maxdepth 1 -type f -regex '.*\.(asciidoc|creole|md|markdown|mediawiki|org|pod|rest|rdoc|textile|txt)' -execdir basename '{}' ';'); do
     echo $i
     if [[ ! " ${DOC_TO_SKIP[@]} " =~ " ${i} " ]]; then
         cp $MD_FOLDER/$i $TEMP_CLONE_FOLDER

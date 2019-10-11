@@ -4,9 +4,10 @@
   </p>
 </h1>
 <p align="center">
-  This repository provides a GitHub action to <strong>publish Wiki pages <i>with a provided markdown</i></strong> into the Wiki section of your GitHub repository.
+  This repository provides a GitHub action to <strong>publish Wiki pages</strong> into the Wiki section of your GitHub repository.
 </p>
 
+**Table of Contents**
 **Table of Contents**
 
   - [Common usage](#common-usage)
@@ -21,7 +22,7 @@
 - [Credits](#credits)
 
 ## Common usage
-The action requires some content _markdown/wiki pages_ that must be generated on a previous step, and located into a specific folder.  
+The action requires some content _wiki pages_ that must be generated on a previous step, and located into a specific folder.  
 This action scans the folder, adds its files, and finally publishes them to the wiki.
 
 ## Breaking change
@@ -76,7 +77,7 @@ To be able to push the new Wiki Page, the action requires some environment varia
 * **ACTION_NAME**: (required) username to use in the push command
 * **OWNER**: (required) repository owner name.
 * **REPO_NAME**: (required) repository name where you want to upload the wiki page to.
-* **MD_FOLDER**: (optional - default is the current folder) folder to scan for markdown files
+* **MD_FOLDER**: (optional - default is the current folder) folder to scan for files
 * **SKIP_MD**: (optional - all files will be processed) comma separated list of files to skip during the analysis (files you don't want to publish)
 * **WIKI_PUSH_MESSAGE**: (optional - sample message will use instead) Custom push message for your wiki pages.
 
@@ -86,10 +87,10 @@ The following one is the workflow we are using to push the release notes to our 
 
 In this example the workflow is started `on milestone`; the first action is filtering on the `closed` action of the milestone (if milestone is created, renamed, ... the other steps are skipped).
 
-The `create-release-notes-action` creates the markdown file (check [here](https://github.com/Decathlon/release-notes-generator-action) if your need more information). 
+The `create-release-notes-action` creates the file (check [here](https://github.com/Decathlon/release-notes-generator-action) if your need more information). 
 The output file is stored into the `temp_release_notes`.
 
-The `wiki-page-creator-action` takes all the markdown files from the `temp_release_notes` folder (skipping a README.md file if found) and uploads them to the provided wiki repo.
+The `wiki-page-creator-action` takes all the wiki files from the `temp_release_notes` folder (skipping a README.md file if found) and uploads them to the provided wiki repo.
 
 ### Using v1.0.0+
 ```
